@@ -51,11 +51,15 @@ colnames(test_mean_std) <- gsub("()", "", colnames(test_mean_std), fixed=TRUE)
 # remove "()" from training data column names
 colnames(training_mean_std) <- gsub("()", "", colnames(training_mean_std), fixed=TRUE)
 
-# Combine test and training dat sets
+# combine test and training dat sets
 all_data <- rbind(as.data.frame(test_mean_std), as.data.frame(training_mean_std))
 
-# Aggregate all data, grouped by Subjects and Activities, finding the means for each observation
+# aggregate all data, grouped by Subjects and Activities, finding the means for each observation
 # and create a wide tidy data set
 aggregated_means <- aggregate(. ~ Subjects + Activities, data = all_data, mean)
+
+# sort the means for each variable for each activity and subject by subject number and activity
 aggregated_means_sorted <- aggregated_means[order(aggregated_means$Subjects, aggregated_means$Activities),]
+
+# write the tidy data set to a text file with row.names = FALSE
 write.table(aggregated_means_sorted, "Samsung_Galaxy_S_Smartphone_data.txt", row.names=FALSE)
