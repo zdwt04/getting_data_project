@@ -1,5 +1,5 @@
-# Project Assignment
-# set working directory to "../UCI HAR Dataset"
+# Project Assignment Getting and Cleaning Data
+# set working directory to "../UCI HAR Dataset" before executing this script
 
 # read in activity labels
 activties_labels <- read.table("./activity_labels.txt", stringsAsFactors = FALSE)
@@ -54,8 +54,8 @@ colnames(training_mean_std) <- gsub("()", "", colnames(training_mean_std), fixed
 # Combine test and training dat sets
 all_data <- rbind(as.data.frame(test_mean_std), as.data.frame(training_mean_std))
 
-# Aggregate all data, grouped by Subjects and Activities
+# Aggregate all data, grouped by Subjects and Activities, finding the means for each observation
+# and create a wide tidy data set
 aggregated_means <- aggregate(. ~ Subjects + Activities, data = all_data, mean)
 aggregated_means_sorted <- aggregated_means[order(aggregated_means$Subjects, aggregated_means$Activities),]
 write.table(aggregated_means_sorted, "Samsung_Galaxy_S_Smartphone_data.txt", row.names=FALSE)
-write.csv(aggregated_means_sorted, "Samsung_Galaxy_S_Smartphone_data.csv", row.names=FALSE)
