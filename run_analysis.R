@@ -37,7 +37,7 @@ training_activties$Activities <- sapply(training_activties, function(x) activtie
 df_test <- cbind(test_subjects, test_activties, test_values)
 df_training <- cbind(training_subjects, training_activties, training_values)
 
-# create test and training data tables
+# create test and training data frame tables
 dt_test <- tbl_df(df_test)
 dt_training <- tbl_df(df_training)
 

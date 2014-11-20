@@ -2,4 +2,4 @@ The run_analysis.R script will generate the mean values for each observation typ
 
 Readable column names will be created from the values stored in the "features.txt" file and assigned to the appropriate data columns. Only the observations generated with the "mean()" or "std()" functions will be selected and saved in the final data set.
 
-The output of this R script is a wide tidy data set with mean values for each activity or row for each subject.
+The output of this R script is written to a file named "Samsung_Galaxy_S_Smartphone_data.txt" and is a wide tidy data set with mean values for each activity or row for each subject.
